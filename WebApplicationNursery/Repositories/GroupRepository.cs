@@ -14,34 +14,43 @@ namespace WebApplicationNursery.Repositories
             this.nurseryContext = nurseryContext;
         }
 
-        public void Add(Group element)
+        public void Add(Group group)
         {
-            throw new NotImplementedException();
+            nurseryContext.Add(group);
+            nurseryContext.SaveChanges();
         }
 
-        public void Edit(Group element)
+        public void Edit(Group group)
         {
-            throw new NotImplementedException();
+            nurseryContext.Update(group);
+            nurseryContext.SaveChanges();
         }
 
         public Group GetId(long id)
         {
-            throw new NotImplementedException();
+            return nurseryContext.Groups.ToList().FirstOrDefault(g => g.Id == id);
         }
 
         public List<Group> GetList()
         {
-            throw new NotImplementedException();
+            return nurseryContext.Groups.ToList();
         }
 
         public List<Group> GetSearched(string name)
         {
-            throw new NotImplementedException();
+            return nurseryContext.Groups.Where(g => g.Name.ToLower().Contains(name.ToLower())).ToList();
+        }
+
+        public List<Group> GetSearchedByTeacher(string teacher)
+        {
+            return nurseryContext.Groups.Where(g => g.Teacher.ToLower().Contains(teacher.ToLower())).ToList();
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            var removableGroup = nurseryContext.Groups.ToList().FirstOrDefault(g => g.Id == id);
+            nurseryContext.Remove(removableGroup);
+            nurseryContext.SaveChanges();
         }
     }
 }
