@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebApplicationNursery.Models;
 
 namespace WebApplicationNursery.Repositories
@@ -14,34 +13,38 @@ namespace WebApplicationNursery.Repositories
             this.nurseryContext = nurseryContext;
         }
 
-        public void Add(User element)
+        public void Add(User user)
         {
-            throw new NotImplementedException();
+            nurseryContext.Add(user);
+            nurseryContext.SaveChanges();
         }
 
-        public void Edit(User element)
+        public void Edit(User user)
         {
-            throw new NotImplementedException();
+            nurseryContext.Update(user);
+            nurseryContext.SaveChanges();
         }
 
         public User GetId(long id)
         {
-            throw new NotImplementedException();
+            return nurseryContext.Users.ToList().FirstOrDefault(u => u.Id == id);
         }
 
         public List<User> GetList()
         {
-            throw new NotImplementedException();
+            return nurseryContext.Users.ToList();
         }
 
         public List<User> GetSearched(string name)
         {
-            throw new NotImplementedException();
+            return nurseryContext.Users.Where(u => u.FirstName.ToLower().Contains(name.ToLower())).Where(t => t.LastName.ToLower().Contains(name.ToLower())).ToList();
         }
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            var removableUser = nurseryContext.Users.ToList().FirstOrDefault(u => u.Id == id);
+            nurseryContext.Users.Remove(removableUser);
+            nurseryContext.SaveChanges();
         }
     }
 }
