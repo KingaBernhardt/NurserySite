@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApplicationNursery.Models
 {
-    public class GroupModel
+    public class Group
     {
         public long Id { get; set; }
         public string Name { get; set; }
