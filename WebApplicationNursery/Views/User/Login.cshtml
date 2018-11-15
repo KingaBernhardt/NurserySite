@@ -5,4 +5,18 @@
 }
 
 <h2>Login</h2>
+<form action="/login" method="post">
+    <div>
+        <label id="email">Email Address</label>
+        <input type="email" name="email" value="" required/>
+    </div>
+    <div>
+        <label id="password">Password</label>
+        <input type="text" name="password" value="" required/>
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>
+    <div><a href="/registration">If you don't have an account click here to register.</a></div>
+</form>
 

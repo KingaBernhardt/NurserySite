@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApplicationNursery.Services
 {
-    interface IGroupService
+    public interface IGroupService
     {
     }
 }
